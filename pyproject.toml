@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "multi-assets-sim"
-version = "0.1.0"
+version = "0.1.1"
 description = "相関を持つ複数アセットでモンテカルロシミュレーションを行うGUIソフトウェア"
 authors = ["ksk-log <150491853+ksk-log@users.noreply.github.com>"]
 readme = "README.md"
@@ -15,6 +15,9 @@ pyyaml = "^6.0.1"
 openpyxl = "^3.1.2"
 xlrd = "^2.0.1"
 
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.1.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -20,6 +20,9 @@ poetry install
 
 # run
 poetry run python app.py
+
+# build
+poetry run flet pack app.py --name multi_assets_sim
 ```
 
 ## Usage
@@ -122,3 +125,4 @@ GPIFの2020年4月1日に適用した基本ポートフォリオでは相関係�
 ## Changelog
 
 - 2023/11/11 ver 0.1.0
+- 2023/11/11 ver 0.1.1: add dependency
