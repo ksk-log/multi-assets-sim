@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+out/*
+build/*
+dist/*
+*.spec
+poetry.lock

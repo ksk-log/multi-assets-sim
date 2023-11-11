@@ -1,0 +1,7 @@
+month: 30000
+percentiles: [99, 97, 84, 50, 16, 3, 1]
+profit: 0.05
+risk: 0.23
+size: 10000
+start: 0
+year: 20
