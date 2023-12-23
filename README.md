@@ -135,3 +135,4 @@ poetry export --without-hashes --format requirements.txt --output requirements.t
 - 2023/11/11 ver 0.1.0
 - 2023/11/11 ver 0.1.1: add dependency
 - 2023/12/23 ver 0.1.2: add github actions
+- 2023/12/23 ver 0.1.3: fix github actions
