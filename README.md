@@ -122,7 +122,16 @@ GPIFの2020年4月1日に適用した基本ポートフォリオでは相関係�
 | 期待リターン(実質)[%] | -1.6     | 0.3      | 3.3      | 4.9      |
 
 
+## requirements.txt
+Github Actionsに利用する。以下でエクスポートしたrequirements.txtを利用している。
+
+```bash
+poetry export --without-hashes --format requirements.txt --output requirements.txt
+```
+
+
 ## Changelog
 
 - 2023/11/11 ver 0.1.0
 - 2023/11/11 ver 0.1.1: add dependency
+- 2023/12/23 ver 0.1.2: add github actions

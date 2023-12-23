@@ -5,5 +5,8 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
+  "terminal.integrated.env.windows": {
+    "PSExecutionPolicyPreference": "RemoteSigned"
+  },
   "python.formatting.provider": "none"
 }

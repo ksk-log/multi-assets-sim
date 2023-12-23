@@ -1,0 +1,53 @@
+name: build-flet-cross
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Create Release"
+        run: gh release create ${{github.ref_name}} --draft --verify-tag --notes "Release ${{github.ref_name}}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  cross-build:
+    needs: create-release
+    strategy:
+      matrix:
+        include:
+          - runs-on: ubuntu-latest
+            flet-name: myapp_linux
+            binary-name: myapp_linux.tar.gz
+          - runs-on: macos-latest
+            flet-name: myapp_macos
+            binary-name: myapp_maco.tar.gz
+          - runs-on: windows-latest
+            flet-name: myapp_windows
+            binary-name: myapp_windows.zip
+    runs-on: ${{ matrix.runs-on }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - run: flet pack app.py --name ${{ matrix.flet-name }}
+      # - run: ls -ahl dist
+      - name: "Linux/MacOS compress"
+        if: runner.os != 'Windows'
+        run: tar zcvf ${{matrix.binary-name}} dist
+      - name: "Windows compress"
+        if: runner.os == 'Windows'
+        run: powershell Compress-Archive -Path dist -DestinationPath ${{matrix.binary-name}}
+      - name: "Upload Release"
+        run: gh release upload ${{github.ref_name}} ${{matrix.binary-name}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
