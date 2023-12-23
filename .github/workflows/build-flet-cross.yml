@@ -21,14 +21,14 @@ jobs:
       matrix:
         include:
           - runs-on: ubuntu-latest
-            flet-name: myapp_linux
-            binary-name: myapp_linux.tar.gz
+            flet-name: multi_assets_sim_linux
+            binary-name: multi_assets_sim_linux.tar.gz
           - runs-on: macos-latest
-            flet-name: myapp_macos
-            binary-name: myapp_maco.tar.gz
+            flet-name: multi_assets_sim_macos
+            binary-name: multi_assets_sim_macos.tar.gz
           - runs-on: windows-latest
-            flet-name: myapp_windows
-            binary-name: myapp_windows.zip
+            flet-name: multi_assets_sim_windows
+            binary-name: multi_assets_sim_windows.zip
     runs-on: ${{ matrix.runs-on }}
     permissions:
       contents: write
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-          # cache: "pip"
+          cache: "pip"
       - run: pip install -r requirements.txt
       - run: flet pack app.py --name ${{ matrix.flet-name }}
       # - run: ls -ahl dist
