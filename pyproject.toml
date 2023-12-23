@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "multi-assets-sim"
-version = "0.1.3"
+version = "0.1.4"
 description = "相関を持つ複数アセットでモンテカルロシミュレーションを行うGUIソフトウェア"
 authors = ["ksk-log <150491853+ksk-log@users.noreply.github.com>"]
 readme = "README.md"
